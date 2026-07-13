@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nomadic Horizon Travel - モンゴル大自然ツアー</title>
+    <style>
+        /* カラーパレット & 基本設定 */
+        :root {
+            --primary-color: #0077b6; /* 青空と湖のブルー */
+            --secondary-color: #e9c46a; /* ゴビ砂漠のゴールド */
+            --accent-color: #2a9d8f; /* 自然・草原のグリーン */
+            --dark-color: #264653; /* テキスト用ネイビー */
+            --light-color: #f8f9fa; /* 背景用グレー */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.8;
+            letter-spacing: 0.05em;
+        }
+
+        /* ヘッダー & ナビゲーション */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('hero-mongolia-ai.jpg') no-repeat center center/cover;
+            /* AI PROMPT: Hyper-realistic cinematic shot of Mongolian endless steppe, blue sky with white clouds, majestic mountains in background, high quality --ar 16:9 */
+            height: 85vh;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .hero-text {
+            margin-bottom: 20vh;
+        }
+
+        .hero-text h1 {
+            font-size: 52px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+            font-weight: 700;
+        }
+
+        .hero-text p {
+            font-size: 22px;
+            color: #f0f0f0;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+        }
+
+        /* セクション共通スタイル */
+        section {
+            padding: 90px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 60px;
+            position: relative;
+            color: var(--dark-color);
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            display: block;
+            font-size: 14px;
+            color: var(--primary-color);
+            text-align: center;
+            margin-top: -50px;
+            margin-bottom: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* モンゴル大自然ギャラリー */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            height: 280px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.6s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-desc {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+            color: white;
+            padding: 25px 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* CEOプロフィールセクション */
+        .ceo-container {
+            background-color: white;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            padding: 50px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+
+        .ceo-img {
+            flex: 1;
+            max-width: 350px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .ceo-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .ceo-content {
+            flex: 2;
+        }
+
+        .ceo-content h3 {
+            font-size: 28px;
+            color: var(--dark-color);
+            margin-bottom: 5px;
+        }
+
+        .ceo-content .title {
+            font-size: 14px;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .ceo-content p {
+            font-size: 15px;
+            color: #4a5568;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        /* チームメンバー (10名) */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+        }
+
+        .team-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            transition: 0.3s;
+            padding-bottom: 20px;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+        }
+
+        .team-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .team-card h4 {
+            margin: 15px 0 5px;
+            font-size: 16px;
+            color: var(--dark-color);
+        }
+
+        .team-card p {
+            color: var(--accent-color);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* フッター */
+        footer {
+            background-color: var(--dark-color);
+            color: rgba(255,255,255,0.8);
+            text-align: center;
+            padding: 40px;
+            font-size: 14px;
+        }
+        /* 旅行料金プラン */
+.price-section{
+    background:#ffffff;
+}
+
+.price-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.price-card{
+    background:#f8f9fa;
+    border-radius:15px;
+    text-align:center;
+    padding:35px 20px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.price-card:hover{
+    transform:translateY(-8px);
+}
+
+.price-card h3{
+    font-size:28px;
+    color:#0077b6;
+    margin-bottom:15px;
+}
+
+.price{
+    font-size:38px;
+    color:#e76f51;
+    font-weight:bold;
+    margin:20px 0;
+}
+
+.price-card ul{
+    list-style:none;
+    margin:20px 0;
+}
+
+.price-card li{
+    margin:10px 0;
+}
+
+.price-btn{
+    display:inline-block;
+    padding:12px 28px;
+    background:#0077b6;
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+    transition:.3s;
+}
+
+.price-btn:hover{
+    background:#005f8a;
+}
+.booking-section{
+
+background:white;
+
+padding:80px 10%;
+
+}
+
+.booking-form{
+
+max-width:600px;
+
+margin:auto;
+
+background:#f7f7f7;
+
+padding:30px;
+
+border-radius:15px;
+
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+
+}
+
+.booking-form label{
+
+display:block;
+
+margin-top:20px;
+
+font-weight:bold;
+
+}
+
+.booking-form input,
+.booking-form select{
+
+width:100%;
+
+padding:12px;
+
+margin-top:8px;
+
+border:1px solid #ccc;
+
+border-radius:8px;
+
+font-size:16px;
+
+}
+
+.booking-form button{
+
+margin-top:30px;
+
+width:100%;
+
+padding:15px;
+
+background:#0077b6;
+
+color:white;
+
+border:none;
+
+font-size:18px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+}
+
+.booking-form button:hover{
+
+background:#005f8a;
+
+}
+    </style>
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+    <header id="home">
+        <nav>
+            <div class="logo">NOMAD HORIZON</div>
+            <ul class="nav-links">
+                <li><a href="#home">ホーム</a></li>
+                <li><a href="#nature">モンゴルの大自然</a></li>
+                <li><a href="#ceo">CEOメッセージ</a></li>
+                <li><a href="#team">メンバー紹介</a></li>
+            </ul>
+        </nav>
+        <div class="hero-text">
+            <h1>遊牧民の美しい故郷へ</h1>
+            <p>果てしなく広がる大地と、一生忘れることのない感動体験をあなたに。</p>
+        </div>
+    </header>
+
+    <!-- モンゴルの大自然ギャラリー -->
+    <section id="nature">
+        <h2 class="section-title">美しきモンゴルの大自然</h2>
+        <span class="section-subtitle">Beautiful Landscapes of Mongolia</span>
+        
+        <div class="gallery-grid">
+            <!-- 1. ゴビ砂漠 -->
+            <div class="gallery-item">
+                <img src="Gemini_Generated_Image_q71stqq71stqq71s (2).png" alt="ホンゴル砂丘">
+                <!-- AI PROMPT: Khongor sand dunes Mongolia, Gobi desert, golden hour sunset, cinematic lighting, realistic --ar 4:3 -->
+                <div class="gallery-desc">ホンゴル砂丘 - 黄金のゴビ砂漠</div>
+            </div>
+            <!-- 2. フブスグル湖 -->
+            <div class="gallery-item">
+                <img src="khuvsgul.avif" alt="フブスグル湖">
+                <!-- AI PROMPT: Lake Khuvsgul Mongolia, crystal clear blue water, siberian larch forest, sunny day, realistic --ar 4:3 -->
+                <div class="gallery-desc">フブスグル湖 - 神秘の青い真珠</div>
+            </div>
+            <!-- 3. アルタイ山脈 -->
+            <div class="gallery-item">
+                <img src="namar.jpg" alt="アルタイ・タワン・ボグド">
+                <!-- AI PROMPT: Altai Tavan Bogd mountains Mongolia, snow-capped peaks, glaciers, epic landscape, realistic --ar 4:3 -->
+                <div class="gallery-desc">アルタイ山脈 - 神々が宿る万年雪</div>
+            </div>
+            <!-- 4. テレルジ国立公園 -->
+            <div class="gallery-item">
+                <img src="terelj.webp" alt="テレルジ国立公園">
+                <!-- AI PROMPT: Terelj National Park Mongolia, giant turtle rock, green alpine valley, dramatic rocks, realistic --ar 4:3 -->
+                <div class="gallery-desc">テレルジ - 緑豊かな奇岩の景勝地</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CEOセクション -->
+    <section id="ceo" style="background-color: #f0f4f8;">
+        <h2 class="section-title">代表挨拶</h2>
+        <span class="section-subtitle">CEO Message</span>
+        
+        <div class="ceo-container">
+            <div class="ceo-img">
+                <img src="25202_ノミン.jpg" alt="CEOプロファイル">
+                <!-- AI PROMPT: Professional portrait of a 32-year-old Mongolian male/female CEO, smart casual blazer, modern minimal studio background, confident smile, realistic --ar 3:4 -->
+            </div>
+            <div class="ceo-content">
+                <h3>Enkhzorig NominErdene</h3>
+                <span class="title">創業者 兼 最高経営責任者 (CEO)</span>
+                <p>皆様、こんにちは。Nomadic Horizon Travelのホームページをご覧いただき、誠にありがとうございます。代表のテグシェと申します。</p>
+                <p>私は日本に10年間在住し、現地の進んだ文化や高いサービス基準を肌で学んでまいりました。学業におきましては、<b>島根ITビジネス専門学校</b>にてデザインの基礎と最先端のクリエイティブを専攻し、その後、<b>日本経済大学</b>にてビジネス管理およびマーケティングを深く学びました。</p>
+                <p>日本で培った「おもてなしの心」とデザイン・ビジネスの知識を活かし、生まれ故郷であるモンゴルのありのままの美しい大自然を、世界中の人々へ最高のクオリティで届けたいという強い想いから、32歳となった今年、このアメニティ豊かなトラベル会社を設立いたしました。</p>
+                <p>プロフェッショナルなスタッフ一同、皆様に一生の思い出となる特別な旅を提供することをお約束いたします。</p>
+            </div>
+        </div>
+    </section>
+    <!-- 旅行料金プラン -->
+<section class="price-section" id="price">
+
+<h2 class="section-title">旅行料金プラン</h2>
+<span class="section-subtitle">Tour Packages</span>
+
+<div class="price-grid">
+
+    <div class="price-card">
+        <h3>3日プラン</h3>
+        <div class="price">40,000円</div>
+
+        <ul>
+            <li>✔ ホテル宿泊</li>
+            <li>✔ 朝食付き</li>
+            <li>✔ ガイド付き観光</li>
+            <li>✔ 空港送迎</li>
+        </ul>
+
+        <a href="#booking" class="price-btn">予約する</a>
+    </div>
+
+    <div class="price-card">
+        <h3>7日プラン</h3>
+        <div class="price">60,000円</div>
+
+        <ul>
+            <li>✔ ホテル宿泊</li>
+            <li>✔ 全食付き</li>
+            <li>✔ ゴビ砂漠ツアー</li>
+            <li>✔ ゲル宿泊体験</li>
+        </ul>
+
+        <a href="#booking" class="price-btn">予約する</a>
+    </div>
+
+    <div class="price-card">
+        <h3>10日プラン</h3>
+        <div class="price">85,000円</div>
+
+        <ul>
+            <li>✔ ホテル宿泊</li>
+            <li>✔ 全食付き</li>
+            <li>✔ モンゴル全域観光</li>
+            <li>✔ 乗馬体験</li>
+            <li>✔ ゲル宿泊体験</li>
+        </ul>
+
+       <button type="button" onclick="location.href='#booking'">
+予約する
+</button>
+    </div>
+
+</div>
+
+</section>
+    <!-- チーム紹介 (10名のプロフェッショナル) -->
+    <section id="team">
+        <h2 class="section-title">スタッフ紹介</h2>
+        <span class="section-subtitle">Our Professional Team</span>
+        
+        <div class="team-grid">
+            <!-- 1 -->
+   <!-- 1 -->
+<div class="team-card">
+    <img src="staff1-ai.png" alt="スタッフ1">
+    <h4>バトエルデネ</h4>
+    <p>チーフ・ツアーガイド</p>
+    <hr>
+    <p><b>生年月日：</b>1996年5月18日</p>
+    <p><b>最終学歴：</b>モンゴル国立大学</p>
+    <p><b>卒業：</b>2020年</p>
+    <p><b>経験：</b>6年</p>
+    <p><b>言語：</b>モンゴル語・日本語・英語</p>
+    <p><b>1日給料：</b>18,000円</p>
+</div>
+
+<!-- 2 -->
+<div class="team-card">
+    <img src="staff2-ai.png" alt="スタッフ2">
+    <h4>アヌジン</h4>
+    <p>マーケティングマネージャー</p>
+    <hr>
+    <p><b>生年月日：</b>1998年2月10日</p>
+    <p><b>最終学歴：</b>島根ITビジネス専門学校</p>
+    <p><b>卒業：</b>2021年</p>
+    <p><b>経験：</b>4年</p>
+    <p><b>言語：</b>モンゴル語・日本語</p>
+    <p><b>1日給料：</b>16,000円</p>
+</div>
+
+<!-- 3 -->
+<div class="team-card">
+    <img src="staff3-ai.png" alt="スタッフ3">
+    <h4>ボルド</h4>
+    <p>財務最高責任者</p>
+    <hr>
+    <p><b>生年月日：</b>1994年8月22日</p>
+    <p><b>最終学歴：</b>モンゴル金融大学</p>
+    <p><b>卒業：</b>2018年</p>
+    <p><b>経験：</b>8年</p>
+    <p><b>言語：</b>モンゴル語・英語</p>
+    <p><b>1日給料：</b>20,000円</p>
+</div>
+
+<!-- 4 -->
+<div class="team-card">
+    <img src="staff4-ai.png" alt="スタッフ4">
+    <h4>サルナイ</h4>
+    <p>ツアーコーディネーター</p>
+    <hr>
+    <p><b>生年月日：</b>1997年3月12日</p>
+    <p><b>最終学歴：</b>国際観光大学</p>
+    <p><b>卒業：</b>2019年</p>
+    <p><b>経験：</b>5年</p>
+    <p><b>言語：</b>モンゴル語・日本語</p>
+    <p><b>1日給料：</b>17,000円</p>
+</div>
+
+<!-- 5 -->
+<div class="team-card">
+    <img src="staff5-ai.png" alt="スタッフ5">
+    <h4>トムル</h4>
+    <p>海外事業部マネージャー</p>
+    <hr>
+    <p><b>生年月日：</b>1993年11月5日</p>
+    <p><b>最終学歴：</b>東京経営大学</p>
+    <p><b>卒業：</b>2017年</p>
+    <p><b>経験：</b>9年</p>
+    <p><b>言語：</b>モンゴル語・日本語・英語</p>
+    <p><b>1日給料：</b>23,000円</p>
+</div>
+
+<!-- 6 -->
+<div class="team-card">
+    <img src="staff6-ai.png" alt="スタッフ6">
+    <h4>バヤル</h4>
+    <p>ロジスティクス＆運行管理</p>
+    <hr>
+    <p><b>生年月日：</b>1995年7月19日</p>
+    <p><b>最終学歴：</b>モンゴル工科大学</p>
+    <p><b>卒業：</b>2018年</p>
+    <p><b>経験：</b>7年</p>
+    <p><b>言語：</b>モンゴル語・英語</p>
+    <p><b>1日給料：</b>19,000円</p>
+</div>
+
+<!-- 7 -->
+<div class="team-card">
+    <img src="staff7-ai.png" alt="スタッフ7">
+    <h4>ナラン</h4>
+    <p>専属ヘッドシェフ</p>
+    <hr>
+    <p><b>生年月日：</b>1996年9月8日</p>
+    <p><b>最終学歴：</b>Culinary Academy</p>
+    <p><b>卒業：</b>2019年</p>
+    <p><b>経験：</b>6年</p>
+    <p><b>言語：</b>モンゴル語・日本語</p>
+    <p><b>1日給料：</b>18,000円</p>
+</div>
+
+<!-- 8 -->
+<div class="team-card">
+    <img src="staff8-ai.png" alt="スタッフ8">
+    <h4>トゴルドロ</h4>
+    <p>ITシステムエンジニア</p>
+    <hr>
+    <p><b>生年月日：</b>1999年1月20日</p>
+    <p><b>最終学歴：</b>島根ITビジネス専門学校</p>
+    <p><b>卒業：</b>2022年</p>
+    <p><b>経験：</b>3年</p>
+    <p><b>言語：</b>モンゴル語・日本語・英語</p>
+    <p><b>1日給料：</b>17,000円</p>
+</div>
+
+<!-- 9 -->
+<div class="team-card">
+    <img src="staff9-ai.png" alt="スタッフ9">
+    <h4>フラン</h4>
+    <p>カスタマーサポート</p>
+    <hr>
+    <p><b>生年月日：</b>1998年6月14日</p>
+    <p><b>最終学歴：</b>モンゴル大学</p>
+    <p><b>卒業：</b>2021年</p>
+    <p><b>経験：</b>4年</p>
+    <p><b>言語：</b>モンゴル語・日本語</p>
+    <p><b>1日給料：</b>16,000円</p>
+</div>
+
+<!-- 10 -->
+<div class="team-card">
+    <img src="staff10-ai.png" alt="スタッフ10">
+    <h4>ガントゥルガ</h4>
+    <p>専属フォトグラファー</p>
+    <hr>
+    <p><b>生年月日：</b>1997年4月3日</p>
+    <p><b>最終学歴：</b>Arts University</p>
+    <p><b>卒業：</b>2020年</p>
+    <p><b>経験：</b>5年</p>
+    <p><b>言語：</b>モンゴル語・英語</p>
+    <p><b>1日給料：</b>18,000円</p>
+</div>
+        </div>
+    </section>
+    <section id="booking" class="booking-section">
+
+<h2 class="section-title">ツアー予約</h2>
+<span class="section-subtitle">Booking Form</span>
+
+<div class="booking-form">
+
+<label>メールアドレス</label>
+<input type="email" placeholder="example@gmail.com">
+
+<label>お支払い方法</label>
+<select>
+<option>モンゴル銀行</option>
+<option>日本銀行</option>
+</select>
+
+<label>銀行口座番号</label>
+<select>
+<option>Golomt Bank : 123456789012</option>
+<option>Khan Bank : 987654321000</option>
+<option>三井住友銀行 : 1234567</option>
+<option>ゆうちょ銀行 : 7654321</option>
+</select>
+
+<label>担当スタッフ</label>
+<select>
+
+<option>バトエルデネ</option>
+<option>アヌジン</option>
+<option>ボルド</option>
+<option>サルナイ</option>
+<option>トムル</option>
+<option>バヤル</option>
+<option>ナラン</option>
+<option>トゴルドロ</option>
+<option>フラン</option>
+<option>ガントゥルガ</option>
+
+</select>
+
+<label>ツアーコース</label>
+
+<select id="tour" onchange="priceChange()">
+
+<option value="40000">ウランバートル</option>
+
+<option value="40000">テレルジ国立公園</option>
+
+<option value="55000">フブスグル湖 (+150ドル)</option>
+
+<option value="55000">ゴビ砂漠 (+150ドル)</option>
+
+<option value="55000">アルタイ山脈 (+150ドル)</option>
+
+</select>
+
+<h3>合計料金</h3>
+
+<h2 id="price">40,000 円</h2>
+
+<button type="button" onclick="finishBooking()">
+予約する
+</button>
+
+</div>
+
+</section>
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2036 Nomadic Horizon Travel LLC. All Rights Reserved. Designed by Nomio</p>
+    </footer>
+    <script>
+function priceChange(){
+    let tour = document.getElementById("tour").value;
+    document.getElementById("price").innerHTML = tour + " 円";
+}
+
+function finishBooking(){
+    alert("ご予約ありがとうございます！");
+}
+</script>
+</body>
+</html>
